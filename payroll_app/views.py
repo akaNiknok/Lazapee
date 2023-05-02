@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from .models import Employee, Payslip
 
 # Create your views here.
 
 def employees(request):
-    return render(request, 'payroll_app/employees.html')
+    employee_objs = Employee.objects.all()
+    return render(request, 'payroll_app/employees.html',
+                  {'employees': employee_objs})
 
 def create_employee(request):
     if request.method == "POST":
@@ -21,7 +24,9 @@ def payslips(request):
     if request.method == "POST":
         pass
     else:
-        return render(request, 'payroll_app/payslips.html')
+        payslip_objs = Payslip.objects.all()
+        return render(request, 'payroll_app/payslips.html',
+                      {'payslips': payslip_objs})
 
 def view_payslip(request, pk):
     return render(request, 'payroll_app/view_payslip.html')
