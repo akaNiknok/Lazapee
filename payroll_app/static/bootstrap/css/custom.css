@@ -1,0 +1,32 @@
+table {
+    border-collapse: collapse;
+  }
+
+
+td {
+    padding: 5px;
+    border: 1px lightgrey;
+}
+
+
+.footer {
+    width:100%;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+  }
+  
+.navbar-brand {
+    margin-right: 1em;
+    margin-left: 1em;
+    color: #fff;
+  }
+  
+.nav-link {
+    font-size: smaller;
+    color: #fff;
+  }
+

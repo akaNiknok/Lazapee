@@ -19,7 +19,8 @@ from . import views
 urlpatterns = [
     path('', views.employees, name="employees"),
     path('create_employee', views.create_employee, name="create_employee"),
-    path('update_employee/<int:pk>', views.update_employee, name="update_employee"),
+    path('update_employee/<int:pk>/', views.update_employee, name="update_employee"),
     path('payslips', views.payslips, name="payslips"),
-    path('view_payslip/<int:pk>', views.view_payslip, name="view_payslip"),
+    path('view_payslip', views.view_payslip, name="view_payslip"),
+    path('delete_employee/<int:pk>/', views.delete_employee, name="delete_employee"),
 ]
