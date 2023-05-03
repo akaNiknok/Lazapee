@@ -1,1 +1,18 @@
-base
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static '/bootstrap/css/custom.css' %}">
+<script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<nav class="nav" style="background-color: #EE4D2D;">
+        <a class="navbar-brand" href="">LAZAPEE Payroll</span> </a>
+        <a class="nav-link" href="{% url 'employees' %}">Employees</a>
+        <a class="nav-link" href="{% url 'payslips' %}">Payslips</a>
+</nav>
+
+        {% block content %}
+        {% endblock %}
+
+<footer class="footer bg-custom fixed-bottom" style="background-color: #EE4D2D;">
+    <div class="container">&copy; 2020</div> 
+</footer>

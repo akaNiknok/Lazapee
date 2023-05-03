@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Employee, Payslip
 
 # Create your views here.
@@ -28,5 +28,9 @@ def payslips(request):
         return render(request, 'payroll_app/payslips.html',
                       {'payslips': payslip_objs})
 
-def view_payslip(request, pk):
+def view_payslip(request):
     return render(request, 'payroll_app/view_payslip.html')
+
+def delete_employee(request, pk):
+    Employee.objects.filter(pk=pk).delete()
+    return redirect('employees')

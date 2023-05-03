@@ -1,1 +1,86 @@
-view payslip
+{% extends 'payroll_app/base.html' %}
+{% load static %} 
+
+{% block content %}
+
+<div class="container text-center py-3">
+   <div class="row">
+        <div class="col-6" style="text-align:left;">
+            NAME: {{p.name}}
+        </div>
+        <div class="col-6" style="text-align:right;">
+            DATE: {{p.date_range}}
+        </div>
+   </div>
+   <div class="row" style="text-align:left;">
+    <div class="col-6">
+        ID NUMBER: {{p.date_range}}
+    </div>
+    <div class="col-6" style="text-align:right;">
+        PAYSLIP ID: {{p.pay_cycle}}
+    </div>
+</div>
+<div class="container text-center py-3">
+    <div class="row">
+        <div class="col-5" style="text-align:left;">
+            <strong>EARNINGS:</strong>
+            <p> Base Pay <br> Allowances <br> Overtime </p>
+        </div>
+        <div class="col-5" style="text-align:right;">
+            <br>
+            <p> {{p.rate}} <br> {{p.earnings_allowance}} <br> {{p.overtime}} </p>
+        </div>
+        <div class="col-2"><strong>AMOUNT</strong></div>
+    </div>
+    <div class="row">
+        <hr>
+        <div class="col-5" style="text-align:left;">
+            <strong>GROSS PAY:</strong>
+        </div>
+        <div class="col-5" style="text-align:right;"></div>
+        <div class="col-2"><strong>PHP {{p.gross_pay}}</strong></div>
+    </div>
+</div>
+<div class="container text-center py-3">
+    <div class="row">
+        <hr>
+        <div class="col-5" style="text-align:left;">
+            DEDUCTIONS:
+            {% if p.pay_cycle == 1 %}
+                <p> W/HOLDING TAX <br> PAG-IBIG </p>
+            {% elif p.pay_cycle == 2 %}
+                <p> W/HOLDING TAX <br> PHILHEALTH <br> SSS </p>
+            {% endif %}
+        </div>
+        <div class="col-5" style="text-align:right;">
+            <br>
+            {% if p.pay_cycle == 1 %}
+                <p> {{p.deductions_tax}} <br> {{p.pag_ibig}} </p>
+            {% elif p.pay_cycle == 2 %}
+                <p> {{p.deductions_tax}} <br> {{p.deductions_health}} <br> {{p.sss}} </p>
+            {% endif %}
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+    <div class="row">
+        <hr>
+        <div class="col-5" style="text-align:left;">
+            <strong>TOTAL DEDUCTIONS:</strong>
+        </div>
+        <div class="col-5" style="text-align:right;"></div>
+        <div class="col-2"><strong>PHP {{p.deductions}}</strong></div>
+    </div>
+</div>
+<div class="container text-center">
+    <div class="row">
+        <hr>
+        <div class="col-5" style="text-align:left;">
+            <strong><h3>NET PAY: </h3></strong>
+        </div>
+        <div class="col-5" style="text-align:right;"></div>
+        <div class="col-2"><strong><h3>PHP {{p.total_pay}}</h3></strong></div>
+    </div>
+</div>
+
+{% endblock %}
