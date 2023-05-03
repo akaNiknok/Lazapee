@@ -31,12 +31,13 @@
             <td> {{ e.overtime_pay }} </td>
             <td> 
                 <form method="POST" action="{% url 'employees' %}"> {% csrf_token %}
+                    <input type="hidden" name="id_number" id="id_number" value="{{ e.id_number }}">
                     <div class="row">
                       <div class="col-6">
-                        <input type="number" id="addOvertime" name="addOvertime" class="form-control">
+                        <input type="number" id="addOvertime" name="addOvertime" class="form-control" required>
                       </div>    
                       <div class="col-6">
-                        <a href="" type="button" class="btn btn-success"> Add Overtime </a>
+                        <button type="submit" class="btn btn-success"> Add Overtime </a>
                       </div>
                     </div>
                 </form>

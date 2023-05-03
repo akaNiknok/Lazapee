@@ -4,9 +4,23 @@ from .models import Employee, Payslip
 # Create your views here.
 
 def employees(request):
-    employee_objs = Employee.objects.all()
-    return render(request, 'payroll_app/employees.html',
-                  {'employees': employee_objs})
+    if request.method == "POST":
+        id_number = request.POST.get('id_number')
+        overtime_hours = float(request.POST.get('addOvertime'))
+        employee = Employee.objects.get(pk=id_number)
+
+        overtime = (employee.getRate() / 160) * 1.5 * overtime_hours
+        if employee.overtime_pay:
+            employee.overtime_pay += employee.overtime_pay + overtime
+        else:
+            employee.overtime_pay = overtime
+
+        employee.save()
+        return redirect("employees")
+    else:
+        employee_objs = Employee.objects.all()
+        return render(request, 'payroll_app/employees.html',
+                    {'employees': employee_objs})
 
 def create_employee(request):
     if request.method == "POST":
