@@ -12,15 +12,15 @@
             <form method="POST" action="{% url 'create_employee' %}">{% csrf_token %}
                 <div class="mb-3">
                     <label for="name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label for="id_number" class="form-label">ID Number:</label>
-                    <input type="number" class="form-control" id="id_number" name="id_number">
+                    <input type="number" class="form-control" id="id_number" name="id_number" required>
                 </div>
                 <div class="mb-3">
                     <label for="rate" class="form-label">Rate:</label>
-                    <input type="number" class="form-control" id="rate" name="rate">
+                    <input type="number" class="form-control" id="rate" name="rate" required>
                 </div>
                 <div class="mb-3">
                     <label for="allowance" class="form-label">Allowance (Optional):</label>

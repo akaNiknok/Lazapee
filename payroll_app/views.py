@@ -24,7 +24,23 @@ def employees(request):
 
 def create_employee(request):
     if request.method == "POST":
-        pass
+        name = request.POST.get('name')
+        id_number = request.POST.get('id_number')
+        rate = request.POST.get('rate')
+        allowance = request.POST.get('allowance')
+
+        if Employee.objects.filter(id_number=id_number).exists():
+            # Optional: Message errors
+            return redirect('updaate_employee')
+        
+        if allowance == "":
+            allowance = None
+        
+        Employee.objects.create(name=name,
+                                id_number=id_number,
+                                rate=rate,
+                                allowance=allowance)
+        return redirect('employees')
     else:
         return render(request, 'payroll_app/create_employee.html')
 
