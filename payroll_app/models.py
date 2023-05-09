@@ -20,13 +20,19 @@ class Employee(models.Model):
         return self.rate
     
     def getOvertime(self):
-        return self.overtime_pay
+        if self.overtime_pay:
+            return self.overtime_pay
+        else:
+            return 0
     
     def resetOvertime(self):
-        self.overtime_pay = 0
+        self.overtime_pay = None
     
     def getAllowance(self):
-        return self.allowance
+        if self.allowance:
+            return self.allowance
+        else:
+            return 0
     
     def __str__(self):
         return f"pk: {self.id_number}, rate: {self.rate}"
