@@ -27,6 +27,7 @@ class Employee(models.Model):
     
     def resetOvertime(self):
         self.overtime_pay = None
+        self.save()
     
     def getAllowance(self):
         if self.allowance:
@@ -59,6 +60,22 @@ class Payslip(models.Model):
     
     def getMonth(self):
         return self.month
+    
+    def setDate_range(self):
+        months_31 = ["January", "March", "May", "July", "August", "October", "December"]
+
+        if self.pay_cycle == "1":
+            self.date_range = "1-15"
+        else:
+            if self.month in months_31:
+                self.date_range = "16-31"
+            elif self.month != "February":
+                self.date_range = "16-30"
+            elif int(self.year) % 4 == 0:
+                self.date_range = "16-29"
+            else:
+                self.date_range = "16-28"
+        self.save() 
     
     def getDate_range(self):
         return self.date_range

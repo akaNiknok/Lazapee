@@ -9,10 +9,16 @@
         <a class="nav-link" href="{% url 'employees' %}">Employees</a>
         <a class="nav-link" href="{% url 'payslips' %}">Payslips</a>
 </nav>
-
+        {% if messages %}
+        {% for message in messages %}
+                <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+                {{ message }}
+                </div>
+        {% endfor %}
+        {% endif %}
         {% block content %}
         {% endblock %}
 
 <footer class="footer bg-custom fixed-bottom" style="background-color: #EE4D2D;">
-    <div class="container">&copy; 2020</div> 
+    <div class="container">&copy; 2023</div> 
 </footer>

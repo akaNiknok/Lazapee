@@ -28,18 +28,18 @@
                              <label for="month">Month: </label>
                              <select class="form-control" id="month" name="month">
                                  <option value="" disabled selected>Select an option</option>
-                                 <option value="jan">January</option>
-                                 <option value="feb">February</option>
-                                 <option value="mar">March</option>
-                                 <option value="apr">April</option>
-                                 <option value="may">May</option>
-                                 <option value="june">June</option>
-                                 <option value="july">July</option>
-                                 <option value="aug">August</option>
-                                 <option value="sept">September</option>
-                                 <option value="oct">October</option>
-                                 <option value="nov">November</option>
-                                 <option value="dec">December</option>
+                                 <option value="January">January</option>
+                                 <option value="February">February</option>
+                                 <option value="March">March</option>
+                                 <option value="April">April</option>
+                                 <option value="May">May</option>
+                                 <option value="June">June</option>
+                                 <option value="July">July</option>
+                                 <option value="August">August</option>
+                                 <option value="September">September</option>
+                                 <option value="October">October</option>
+                                 <option value="November">November</option>
+                                 <option value="December">December</option>
                              </select>
                          </div>
                      </div>
@@ -91,8 +91,8 @@
                 <tbody>
                     {% for p in payslips %} 
                     <tr>
-                    <td> {{ p.id_number }} </td>
-                    <td> {{ p.date_range }} </td>
+                    <td> {{ p.id_number.id_number }} </td>
+                    <td> {{p.month}} {{ p.date_range }}, {{p.year}} </td>
                     <td> {{ p.pay_cycle }} </td>
                     <td> {{ p.total_pay }} </td>
                     <td> <a href="{% url 'view_payslip' pk=p.pk %}" type="button" class="btn btn-primary"> View </a></td>

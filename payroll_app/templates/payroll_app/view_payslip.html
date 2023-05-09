@@ -9,12 +9,12 @@
             NAME: {{p.id_number.name}}
         </div>
         <div class="col-6" style="text-align:right;">
-            DATE: {{p.date_range}}
+            DATE: {{p.month}} {{p.date_range}}, {{p.year}}
         </div>
    </div>
    <div class="row" style="text-align:left;">
     <div class="col-6">
-        ID NUMBER: {{p.date_range}}
+        ID NUMBER: {{p.id_number.id_number}}
     </div>
     <div class="col-6" style="text-align:right;">
         PAYSLIP ID: {{p.pay_cycle}}
@@ -28,7 +28,7 @@
         </div>
         <div class="col-5" style="text-align:right;">
             <br>
-            <p> {{p.rate}} <br> {{p.earnings_allowance}} <br> {{p.overtime}} </p>
+            <p> {{base_pay}} <br> {{p.earnings_allowance}} <br> {{p.overtime}} </p>
         </div>
         <div class="col-2"><strong>AMOUNT</strong></div>
     </div>
@@ -38,7 +38,7 @@
             <strong>GROSS PAY:</strong>
         </div>
         <div class="col-5" style="text-align:right;"></div>
-        <div class="col-2"><strong>PHP {{p.gross_pay}}</strong></div>
+        <div class="col-2"><strong>PHP {{gross_pay}}</strong></div>
     </div>
 </div>
 <div class="container text-center py-3">
@@ -69,7 +69,7 @@
             <strong>TOTAL DEDUCTIONS:</strong>
         </div>
         <div class="col-5" style="text-align:right;"></div>
-        <div class="col-2"><strong>PHP {{p.deductions}}</strong></div>
+        <div class="col-2"><strong>PHP {{deductions}}</strong></div>
     </div>
 </div>
 <div class="container text-center">
